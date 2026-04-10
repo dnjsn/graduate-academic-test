@@ -9,6 +9,7 @@
   --danger: #a52f2f;
   --success: #305e3f;
   --shadow: 0 18px 40px rgba(32, 24, 20, 0.14);
+  --alert-bg: rgba(165, 47, 47, 0.12);
 }
 
 * {
@@ -55,6 +56,19 @@ button {
   border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-card::before,
+.test-screen::before,
+.result-screen::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(126, 47, 31, 0.2);
+  border-radius: 20px;
+  pointer-events: none;
 }
 
 .intro-card {
@@ -73,6 +87,13 @@ button {
   color: var(--muted);
 }
 
+.system-serial {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
 .intro-card h1,
 .persona-card h1 {
   margin: 0;
@@ -85,6 +106,17 @@ button {
   max-width: 48rem;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.warning-strip,
+.result-alert {
+  padding: 10px 14px;
+  border: 1px solid rgba(165, 47, 47, 0.3);
+  background: var(--alert-bg);
+  color: var(--danger);
+  border-radius: 14px;
+  font-size: 0.94rem;
+  line-height: 1.6;
 }
 
 .intro-card button,
@@ -125,6 +157,7 @@ button {
   justify-content: space-between;
   gap: 16px;
   align-items: center;
+  border-left: 6px solid var(--accent);
 }
 
 .progress-text {
@@ -197,11 +230,26 @@ button {
 .profile-card,
 .result-grid section {
   padding: 20px;
+  position: relative;
 }
 
 .result-screen {
   display: grid;
   gap: 18px;
+}
+
+.stamp {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  padding: 8px 12px;
+  border: 2px solid var(--danger);
+  color: var(--danger);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  transform: rotate(-10deg);
+  opacity: 0.9;
 }
 
 .journal-banner h2 {
@@ -218,11 +266,12 @@ button {
 .decision-chip {
   display: inline-flex;
   padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(126, 47, 31, 0.1);
+  border-radius: 10px;
+  background: rgba(126, 47, 31, 0.12);
   color: var(--accent);
   font-weight: 700;
   margin-bottom: 16px;
+  border: 1px solid rgba(126, 47, 31, 0.18);
 }
 
 .blurb,
@@ -241,6 +290,7 @@ button {
 .profile-card h3,
 .result-grid h3 {
   margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .metric-row {
@@ -258,6 +308,18 @@ button {
 .result-placeholder {
   padding: 40px;
   text-align: center;
+}
+
+@media (max-width: 720px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stamp {
+    position: static;
+    width: fit-content;
+    margin-bottom: 12px;
+  }
 }
 
 @media (max-width: 720px) {

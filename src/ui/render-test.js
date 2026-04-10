@@ -28,15 +28,18 @@ export function renderTestScreen({ progress, questions, answers = {} }) {
   return `
     <div class="test-screen">
       <header class="test-header">
-        <p class="eyebrow">Rubbish Pre-Review Questionnaire</p>
+        <div>
+          <p class="eyebrow">研究生学术命运预审问卷</p>
+          <p class="system-serial">流程阶段：精神样本采集中 / 处理编号：Q-${progress.current}-${progress.total}</p>
+        </div>
         <div class="progress-text">${progress.current} / ${progress.total}</div>
       </header>
       <div class="question-list">
         ${questions.map((question, index) => renderQuestion(question, index, answers)).join('')}
       </div>
       <footer class="test-footer">
-        <p>${isComplete ? '所有题都答完了，现在可以把命运交给编辑部。' : '答完整套题，系统才肯给你投稿去向。'}</p>
-        <button type="button" data-action="submit-test" ${isComplete ? '' : 'disabled'}>查看结果</button>
+        <p>${isComplete ? '所有题都答完了，现在可以把命运移交编辑部。' : '答完整套题，系统才肯出具流放意见。'}</p>
+        <button type="button" data-action="submit-test" ${isComplete ? '' : 'disabled'}>查看鉴定书</button>
       </footer>
     </div>
   `;

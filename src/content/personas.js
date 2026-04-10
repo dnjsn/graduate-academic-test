@@ -1,8 +1,8 @@
 export const personas = [
   {
     id: 'discussion-fills-the-gap',
-    title: '结果不够讨论来凑',
-    subtitle: '结构已完善',
+    title: '叙事代偿型研究者',
+    subtitle: '结果欠奉，结构自救',
     vector: {
       topicInflation: 2,
       rhetoricStitching: 10,
@@ -24,7 +24,7 @@ export const personas = [
   },
   {
     id: 'nobel-at-proposal',
-    title: '开题即诺奖',
+    title: '课题膨胀型幻想患者',
     subtitle: '选题超出培养计划',
     vector: {
       topicInflation: 10,
@@ -47,8 +47,8 @@ export const personas = [
   },
   {
     id: 'almost-significant',
-    title: '差一点就显著',
-    subtitle: '结果接近显著',
+    title: '边缘显著性信徒',
+    subtitle: '趋势已现，现实未批',
     vector: {
       topicInflation: 2,
       rhetoricStitching: 6,
@@ -70,7 +70,7 @@ export const personas = [
   },
   {
     id: 'sounds-like-accepted-soon',
-    title: '讲得像快发了',
+    title: '汇报表演型推进人格',
     subtitle: '阶段性成果可汇报',
     vector: {
       topicInflation: 3,
@@ -93,7 +93,7 @@ export const personas = [
   },
   {
     id: 'meta-cures-all',
-    title: 'Meta包治百病',
+    title: '证据拼接型生存者',
     subtitle: '建议补充亚组分析',
     vector: {
       topicInflation: 2,
@@ -116,7 +116,7 @@ export const personas = [
   },
   {
     id: 'check-public-database-first',
-    title: '先去公共库看看',
+    title: '数据库迁徙型研究者',
     subtitle: '数据来源符合要求',
     vector: {
       topicInflation: 2,
@@ -139,7 +139,7 @@ export const personas = [
   },
   {
     id: 'teacher-is-looking-for-me',
-    title: '老师又找我了',
+    title: '导师应激型生物',
     subtitle: '请尽快来办公室',
     vector: {
       topicInflation: 2,
@@ -162,7 +162,7 @@ export const personas = [
   },
   {
     id: 'apologize-before-reply',
-    title: '先认错再回复',
+    title: '返修顺从型文本机器',
     subtitle: '请逐条回复意见',
     vector: {
       topicInflation: 1,
@@ -185,8 +185,8 @@ export const personas = [
   },
   {
     id: 'submit-and-see',
-    title: '先投着看看',
-    subtitle: '已送盲审',
+    title: '概率型投稿生物',
+    subtitle: '先投，再由系统教育',
     vector: {
       topicInflation: 2,
       rhetoricStitching: 4,
@@ -208,7 +208,7 @@ export const personas = [
   },
   {
     id: 'i-do-the-work-you-take-the-name',
-    title: '活我干的名你们署',
+    title: '高劳工密度研究生',
     subtitle: '已确认贡献',
     vector: {
       topicInflation: 1,
@@ -231,7 +231,7 @@ export const personas = [
   },
   {
     id: 'submit-first-think-later',
-    title: '先投了再说',
+    title: '转投游牧型作者',
     subtitle: '建议转投',
     vector: {
       topicInflation: 2,
@@ -254,8 +254,8 @@ export const personas = [
   },
   {
     id: 'some-journal-will-take-it',
-    title: '总有刊能收',
-    subtitle: '当前版本不予接收',
+    title: '持续爬行型学术生命体',
+    subtitle: '当前版本不予接收，但仍具迁徙能力',
     vector: {
       topicInflation: 1,
       rhetoricStitching: 4,
@@ -280,7 +280,7 @@ export const personas = [
 export const hiddenPersonas = [
   {
     id: 'lucky-graduate',
-    title: '有缘就能毕业',
+    title: '命硬型毕业候选人',
     subtitle: '已获优先处理',
     journalPool: ['Rubbish Communications', 'Rubbish Reports'],
     verdictPool: ['Priority Handling', 'Minor Revision'],
@@ -300,7 +300,7 @@ export const hiddenPersonas = [
   },
   {
     id: 'co-first-is-negotiable',
-    title: '共一可以商量',
+    title: '署名弹性调节者',
     subtitle: '贡献声明待更新',
     journalPool: ['Rubbish Communications', 'Rubbish Labor & Authorship'],
     verdictPool: ['With Editor', 'Minor Revision'],
@@ -316,7 +316,7 @@ export const hiddenPersonas = [
   },
   {
     id: 'dont-ask-during-defense',
-    title: '答辩先别细问',
+    title: '现场追问回避体质',
     subtitle: '当前不在服务区',
     journalPool: ['Rubbish Medicine', 'Rubbish Mental Health'],
     verdictPool: ['With Editor', 'Major Revision'],
@@ -331,4 +331,3 @@ export const hiddenPersonas = [
     },
   },
 ];
-

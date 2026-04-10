@@ -46,6 +46,7 @@ test('buildResultViewModel uses the ranked persona when no hidden persona matche
   assert.equal(result.persona.id, 'almost-significant');
   assert.equal(result.journal.title, 'Rubbish Methods');
   assert.match(result.decision, /Revision|Editor|Reject|Priority/);
+  assert.equal(result.graduationOutcome.title, '建议再做一轮实验');
   assert.ok(result.reviewSnippet);
   assert.ok(result.systemNote);
 });
