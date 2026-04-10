@@ -19,15 +19,42 @@ function pickDecision(persona, profile) {
     return 'Priority Handling';
   }
 
-  if (persona.id === 'some-journal-will-take-it' && (profile.submissionFatalism || 0) >= 8) {
-    return 'Transferred to Rubbish Reports';
+  switch (persona.id) {
+    case 'discussion-fills-the-gap':
+      return (profile.rhetoricStitching || 0) >= 8 ? 'Minor Revision' : 'With Editor';
+    case 'nobel-at-proposal':
+      return (profile.topicInflation || 0) >= 8 ? 'Rejected in Current Form' : 'With Editor';
+    case 'almost-significant':
+      return (profile.significanceFixation || 0) >= 8 ? 'Major Revision' : 'Minor Revision';
+    case 'sounds-like-accepted-soon':
+      return (profile.advisorStress || 0) >= 8 ? 'With Editor' : 'Minor Revision';
+    case 'meta-cures-all':
+      return (profile.shortcutSmell || 0) >= 9 ? 'With Editor' : 'Major Revision';
+    case 'check-public-database-first':
+      return (profile.shortcutSmell || 0) >= 8 ? 'Minor Revision' : 'With Editor';
+    case 'teacher-is-looking-for-me':
+      return (profile.advisorStress || 0) >= 8 ? 'Major Revision' : 'With Editor';
+    case 'apologize-before-reply':
+      return (profile.submissionFatalism || 0) >= 8 ? 'Minor Revision' : 'Major Revision';
+    case 'submit-and-see':
+      return (profile.submissionFatalism || 0) >= 9 ? 'Major Revision' : 'With Editor';
+    case 'i-do-the-work-you-take-the-name':
+      return (profile.laborBurden || 0) >= 9 ? 'Transferred to Rubbish Reports' : 'With Editor';
+    case 'submit-first-think-later':
+      return (profile.rhetoricStitching || 0) >= 5
+        ? 'Transferred to Rubbish Reports'
+        : 'Rejected in Current Form';
+    case 'some-journal-will-take-it':
+      return (profile.submissionFatalism || 0) >= 8
+        ? 'Transferred to Rubbish Reports'
+        : 'Rejected in Current Form';
+    case 'co-first-is-negotiable':
+      return (profile.laborBurden || 0) >= 5 ? 'Minor Revision' : 'With Editor';
+    case 'dont-ask-during-defense':
+      return (profile.advisorStress || 0) >= 8 ? 'Major Revision' : 'With Editor';
+    default:
+      return persona.verdictPool[0];
   }
-
-  if (persona.id === 'nobel-at-proposal' && (profile.topicInflation || 0) >= 8) {
-    return 'Rejected in Current Form';
-  }
-
-  return persona.verdictPool[0];
 }
 
 function pickGraduationOutcome({ persona, profile, answers }) {

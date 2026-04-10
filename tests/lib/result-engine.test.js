@@ -50,3 +50,24 @@ test('buildResultViewModel uses the ranked persona when no hidden persona matche
   assert.ok(result.reviewSnippet);
   assert.ok(result.systemNote);
 });
+
+test('buildResultViewModel can branch away from default with-editor outcomes', () => {
+  const result = buildResultViewModel({
+    answers: { q22: 'B' },
+    profile: {
+      topicInflation: 2,
+      rhetoricStitching: 9,
+      significanceFixation: 5,
+      advisorStress: 4,
+      submissionFatalism: 4,
+      laborBurden: 3,
+      shortcutSmell: 2,
+    },
+    rankedPersonas: [personas.find((persona) => persona.id === 'discussion-fills-the-gap')],
+    hiddenPersonas,
+    journals,
+  });
+
+  assert.equal(result.persona.id, 'discussion-fills-the-gap');
+  assert.equal(result.decision, 'Minor Revision');
+});
