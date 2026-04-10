@@ -6,7 +6,7 @@ export const journals = {
     notes: '适合一上来就默认自己在做大事的人格。',
   },
   'Rubbish Communications': {
-    title: 'Rubbish Communications',
+    title: 'FRONTIERS IN RUBBISH',
     strapline: 'Cross-disciplinary urgency, polished structure, selective patience.',
     theme: 'communications',
     notes: '最常见的综合子刊结果页。',
@@ -54,7 +54,7 @@ export const journals = {
     notes: '公共库路线的专用归宿。',
   },
   'Rubbish Revision Research': {
-    title: 'Rubbish Revision Research',
+    title: 'Rubbish Communications',
     strapline: 'A home for manuscripts sustained by apology and persistence.',
     theme: 'revision',
     notes: '返修型人格的延迟战场。',

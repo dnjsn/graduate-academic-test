@@ -23,7 +23,7 @@ test('buildResultViewModel overrides ranked persona when a hidden persona matche
   });
 
   assert.equal(result.persona.id, 'co-first-is-negotiable');
-  assert.match(result.journal.title, /Trends in Rubbish|Rubbish Communications/);
+  assert.match(result.journal.title, /Trends in Rubbish|FRONTIERS IN RUBBISH/);
 });
 
 test('buildResultViewModel uses the ranked persona when no hidden persona matches', () => {

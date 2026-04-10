@@ -13,6 +13,8 @@ test('content registry has the planned counts', () => {
   assert.ok(journals['Rubbish Communications']);
   assert.ok(journals['Trends in Rubbish']);
   assert.ok(journals['Rubbish NAS']);
+  assert.equal(journals['Rubbish Communications'].title, 'FRONTIERS IN RUBBISH');
+  assert.equal(journals['Rubbish Revision Research'].title, 'Rubbish Communications');
   assert.equal(journals['Rubbish NAS'].title, 'Rubbish NAS');
 });
 
