@@ -10,4 +10,5 @@ test('renderIntroScreen uses the pseudo-official declaration voice', () => {
   assert.match(html, /研究生学术人格暨投稿宿命鉴定/);
   assert.match(html, /本系统不评估你的性格，只鉴定你会以什么姿势把论文拖到截止日前 23:57/);
   assert.match(html, /提交精神样本/);
+  assert.doesNotMatch(html, /本鉴定可能导致你立刻转发给同门/);
 });
