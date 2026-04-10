@@ -41,8 +41,8 @@ export const journals = {
     theme: 'reviews',
     notes: '综述、meta 和证据整合型人格主场。',
   },
-  'Rubbish Mental Health': {
-    title: 'Rubbish Mental Health',
+  'Rubbish NAS': {
+    title: 'Rubbish NAS',
     strapline: 'Where survival itself is treated as a valid endpoint.',
     theme: 'mental-health',
     notes: '导师应激、送盲赌命、规培游魂等精神状态重灾区。',
@@ -59,8 +59,8 @@ export const journals = {
     theme: 'revision',
     notes: '返修型人格的延迟战场。',
   },
-  'Rubbish Labor & Authorship': {
-    title: 'Rubbish Labor & Authorship',
+  'Trends in Rubbish': {
+    title: 'Trends in Rubbish',
     strapline: 'Invisible work, visible signatures.',
     theme: 'authorship',
     notes: '署名、贡献和研究生劳工问题专题。',

@@ -1,17 +1,83 @@
-function pickJournalName(persona, profile) {
-  if (persona.id === 'almost-significant' && (profile.shortcutSmell || 0) >= 6) {
-    return 'Rubbish Medicine';
+function buildSignature(persona, profile) {
+  return (
+    (profile.topicInflation || 0) +
+    (profile.rhetoricStitching || 0) * 2 +
+    (profile.significanceFixation || 0) * 3 +
+    (profile.advisorStress || 0) * 5 +
+    (profile.submissionFatalism || 0) * 7 +
+    (profile.laborBurden || 0) * 11 +
+    (profile.shortcutSmell || 0) * 13 +
+    persona.id.length * 17
+  );
+}
+
+function pickArchetypePersona({ rankedPersonas, profile }) {
+  const findPersona = (id) => rankedPersonas.find((persona) => persona.id === id);
+
+  if ((profile.laborBurden || 0) >= 7 && (profile.advisorStress || 0) >= 6) {
+    return findPersona('i-do-the-work-you-take-the-name');
   }
 
-  if (persona.id === 'meta-cures-all' && (profile.shortcutSmell || 0) >= 8) {
-    return 'Rubbish Reviews';
+  if ((profile.shortcutSmell || 0) >= 8 && (profile.rhetoricStitching || 0) >= 4) {
+    return findPersona('meta-cures-all');
+  }
+
+  if ((profile.shortcutSmell || 0) >= 7 && (profile.submissionFatalism || 0) >= 7) {
+    return findPersona('check-public-database-first');
+  }
+
+  if ((profile.significanceFixation || 0) >= 7) {
+    return findPersona('almost-significant');
+  }
+
+  if ((profile.topicInflation || 0) >= 3 && (profile.submissionFatalism || 0) <= 6) {
+    return findPersona('nobel-at-proposal');
+  }
+}
+
+function pickJournalName(persona, profile, journals) {
+  const signature = buildSignature(persona, profile);
+  const allJournalNames = Object.keys(journals);
+
+  if (persona.id === 'co-first-is-negotiable') {
+    return signature % 2 === 0 ? 'Trends in Rubbish' : 'Rubbish Communications';
+  }
+
+  if (persona.id === 'i-do-the-work-you-take-the-name') {
+    return signature % 2 === 0 ? 'Trends in Rubbish' : 'Rubbish Reports';
+  }
+
+  if (persona.id === 'teacher-is-looking-for-me') {
+    return signature % 2 === 0 ? 'Rubbish NAS' : 'Rubbish Communications';
+  }
+
+  if (persona.id === 'apologize-before-reply') {
+    return signature % 2 === 0 ? 'Rubbish Revision Research' : 'Rubbish Communications';
   }
 
   if (persona.id === 'check-public-database-first' && (profile.shortcutSmell || 0) >= 8) {
-    return 'Rubbish Bioinformatics';
+    return signature % 2 === 0 ? 'Rubbish Bioinformatics' : 'Rubbish Reviews';
   }
 
-  return persona.journalPool[0];
+  if (persona.id === 'meta-cures-all') {
+    if ((profile.shortcutSmell || 0) >= 8 && (profile.rhetoricStitching || 0) >= 4) {
+      return signature % 2 === 0 ? 'Rubbish Metabolism' : 'Rubbish Reviews';
+    }
+  }
+
+  if ((profile.advisorStress || 0) >= 9 && (profile.laborBurden || 0) >= 6) {
+    return ['Rubbish NAS', 'Trends in Rubbish', 'Rubbish Revision Research'][
+      Math.abs(signature) % 3
+    ];
+  }
+
+  if ((profile.significanceFixation || 0) >= 7) {
+    return ['Rubbish Methods', 'Rubbish Medicine', 'Rubbish Reports'][
+      Math.abs(signature) % 3
+    ];
+  }
+
+  return allJournalNames[Math.abs(signature) % allJournalNames.length];
 }
 
 function pickDecision(persona, profile) {
@@ -19,46 +85,19 @@ function pickDecision(persona, profile) {
     return 'Priority Handling';
   }
 
-  switch (persona.id) {
-    case 'discussion-fills-the-gap':
-      return (profile.rhetoricStitching || 0) >= 8 ? 'Minor Revision' : 'With Editor';
-    case 'nobel-at-proposal':
-      return (profile.topicInflation || 0) >= 8 ? 'Rejected in Current Form' : 'With Editor';
-    case 'almost-significant':
-      return (profile.significanceFixation || 0) >= 8 ? 'Major Revision' : 'Minor Revision';
-    case 'sounds-like-accepted-soon':
-      return (profile.advisorStress || 0) >= 8 ? 'With Editor' : 'Minor Revision';
-    case 'meta-cures-all':
-      return (profile.shortcutSmell || 0) >= 9 ? 'With Editor' : 'Major Revision';
-    case 'check-public-database-first':
-      return (profile.shortcutSmell || 0) >= 8 ? 'Minor Revision' : 'With Editor';
-    case 'teacher-is-looking-for-me':
-      return (profile.advisorStress || 0) >= 8 ? 'Major Revision' : 'With Editor';
-    case 'apologize-before-reply':
-      return (profile.submissionFatalism || 0) >= 8 ? 'Minor Revision' : 'Major Revision';
-    case 'submit-and-see':
-      return (profile.submissionFatalism || 0) >= 9 ? 'Major Revision' : 'With Editor';
-    case 'i-do-the-work-you-take-the-name':
-      return (profile.laborBurden || 0) >= 9 ? 'Transferred to Rubbish Reports' : 'With Editor';
-    case 'submit-first-think-later':
-      return (profile.rhetoricStitching || 0) >= 5
-        ? 'Transferred to Rubbish Reports'
-        : 'Rejected in Current Form';
-    case 'some-journal-will-take-it':
-      return (profile.submissionFatalism || 0) >= 8
-        ? 'Transferred to Rubbish Reports'
-        : 'Rejected in Current Form';
-    case 'co-first-is-negotiable':
-      return (profile.laborBurden || 0) >= 5 ? 'Minor Revision' : 'With Editor';
-    case 'dont-ask-during-defense':
-      return (profile.advisorStress || 0) >= 8 ? 'Major Revision' : 'With Editor';
-    default:
-      return persona.verdictPool[0];
-  }
+  const pool = persona.verdictPool.length > 0 ? persona.verdictPool : ['With Editor'];
+  const signature = buildSignature(persona, profile);
+
+  return pool[Math.abs(signature) % pool.length];
 }
 
 function pickGraduationOutcome({ persona, profile, answers }) {
-  if (persona.id === 'lucky-graduate' || answers.q22 === 'C') {
+  if (
+    persona.id === 'lucky-graduate' ||
+    (answers.q22 === 'C' &&
+      (profile.submissionFatalism || 0) >= 11 &&
+      (profile.advisorStress || 0) >= 5)
+  ) {
     return {
       title: '有缘毕业',
       note: '你未必每一步都稳，但命运暂时愿意给你留一条毕业通道。',
@@ -66,9 +105,9 @@ function pickGraduationOutcome({ persona, profile, answers }) {
   }
 
   if (
-    (profile.advisorStress || 0) >= 9 &&
-    (profile.submissionFatalism || 0) >= 9 &&
-    (profile.laborBurden || 0) >= 7
+    (profile.advisorStress || 0) >= 10 &&
+    (profile.submissionFatalism || 0) >= 10 &&
+    (profile.laborBurden || 0) >= 6
   ) {
     return {
       title: '劝退边缘试探',
@@ -76,14 +115,14 @@ function pickGraduationOutcome({ persona, profile, answers }) {
     };
   }
 
-  if ((profile.advisorStress || 0) >= 8 && (profile.laborBurden || 0) >= 6) {
+  if ((profile.advisorStress || 0) >= 8 && (profile.laborBurden || 0) >= 5) {
     return {
       title: '延毕观察',
       note: '你和“再做一轮实验”之间，往往只差导师的一句“还可以再补一点”。',
     };
   }
 
-  if ((profile.significanceFixation || 0) >= 8 || persona.id === 'almost-significant') {
+  if ((profile.significanceFixation || 0) >= 7 || persona.id === 'almost-significant') {
     return {
       title: '建议再做一轮实验',
       note: '目前系统判断你离毕业差的不是勇气，而是一轮看起来更完整的新数据。',
@@ -106,8 +145,9 @@ export function buildResultViewModel({
   const hiddenPersona = hiddenPersonas.find((persona) =>
     persona.matches({ answers, profile }),
   );
-  const persona = hiddenPersona || rankedPersonas[0];
-  const journalName = pickJournalName(persona, profile);
+  const archetypePersona = hiddenPersona ? null : pickArchetypePersona({ rankedPersonas, profile });
+  const persona = hiddenPersona || archetypePersona || rankedPersonas[0];
+  const journalName = pickJournalName(persona, profile, journals);
   const journal = journals[journalName];
 
   return {

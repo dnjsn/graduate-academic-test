@@ -11,6 +11,9 @@ test('content registry has the planned counts', () => {
   assert.equal(personas.length, 12);
   assert.equal(hiddenPersonas.length, 3);
   assert.ok(journals['Rubbish Communications']);
+  assert.ok(journals['Trends in Rubbish']);
+  assert.ok(journals['Rubbish NAS']);
+  assert.equal(journals['Rubbish NAS'].title, 'Rubbish NAS');
 });
 
 test('each question has three answer options with scoring effects', () => {

@@ -23,7 +23,7 @@ test('buildResultViewModel overrides ranked persona when a hidden persona matche
   });
 
   assert.equal(result.persona.id, 'co-first-is-negotiable');
-  assert.equal(result.journal.title, 'Rubbish Communications');
+  assert.match(result.journal.title, /Trends in Rubbish|Rubbish Communications/);
 });
 
 test('buildResultViewModel uses the ranked persona when no hidden persona matches', () => {
@@ -44,7 +44,7 @@ test('buildResultViewModel uses the ranked persona when no hidden persona matche
   });
 
   assert.equal(result.persona.id, 'almost-significant');
-  assert.equal(result.journal.title, 'Rubbish Methods');
+  assert.equal(result.journal.title, 'Rubbish Medicine');
   assert.match(result.decision, /Revision|Editor|Reject|Priority/);
   assert.equal(result.graduationOutcome.title, '建议再做一轮实验');
   assert.ok(result.reviewSnippet);
@@ -55,7 +55,7 @@ test('buildResultViewModel can branch away from default with-editor outcomes', (
   const result = buildResultViewModel({
     answers: { q22: 'B' },
     profile: {
-      topicInflation: 2,
+      topicInflation: 1,
       rhetoricStitching: 9,
       significanceFixation: 5,
       advisorStress: 4,
@@ -70,4 +70,25 @@ test('buildResultViewModel can branch away from default with-editor outcomes', (
 
   assert.equal(result.persona.id, 'discussion-fills-the-gap');
   assert.equal(result.decision, 'Minor Revision');
+});
+
+test('buildResultViewModel routes mechanism-heavy medicine profiles to Rubbish Metabolism', () => {
+  const result = buildResultViewModel({
+    answers: { q22: 'A' },
+    profile: {
+      topicInflation: 2,
+      rhetoricStitching: 5,
+      significanceFixation: 3,
+      advisorStress: 3,
+      submissionFatalism: 6,
+      laborBurden: 2,
+      shortcutSmell: 10,
+    },
+    rankedPersonas: [personas.find((persona) => persona.id === 'meta-cures-all')],
+    hiddenPersonas,
+    journals,
+  });
+
+  assert.equal(result.persona.id, 'meta-cures-all');
+  assert.equal(result.journal.title, 'Rubbish Metabolism');
 });

@@ -81,7 +81,7 @@ export const personas = [
       laborBurden: 3,
       shortcutSmell: 2,
     },
-    journalPool: ['Rubbish Communications', 'Rubbish Mental Health'],
+    journalPool: ['Rubbish Communications', 'Rubbish NAS'],
     verdictPool: ['Minor Revision', 'With Editor'],
     blurb:
       '你最擅长的不是推进实验，而是保证每次组会都能让现状听起来不像停滞。你理解学术汇报的本质是一门表演艺术：背景、逻辑、阶段性进展、后续计划，一个都不能少，哪怕真正有数据的那页只有一张。',
@@ -150,7 +150,7 @@ export const personas = [
       laborBurden: 5,
       shortcutSmell: 1,
     },
-    journalPool: ['Rubbish Mental Health', 'Rubbish Communications'],
+    journalPool: ['Rubbish NAS', 'Rubbish Communications'],
     verdictPool: ['With Editor', 'Major Revision'],
     blurb:
       '你最大的研究能力，不是方法学或写作，而是从一句微信里感知天气变化。你知道哪一句“有空来一下”意味着正常沟通，哪一句意味着 PPT 第三页今晚必须消失。你不是胆小，你只是长期处在高压系统中，已经进化出研究生特有的情绪雷达。',
@@ -219,7 +219,7 @@ export const personas = [
       laborBurden: 10,
       shortcutSmell: 1,
     },
-    journalPool: ['Rubbish Reports', 'Rubbish Labor & Authorship'],
+    journalPool: ['Rubbish Reports', 'Trends in Rubbish'],
     verdictPool: ['Transferred to Rubbish Reports', 'With Editor'],
     blurb:
       '你是组里最常见也最坚韧的存在：活都干了，格式也改了，图也画了，数据也补了，最后署名顺序像彩票开奖。你不是不会争，只是很多时候连争都被安排在完成全部脏活之后。你身上有研究生体系里最稳定的劳工气息。',
@@ -293,8 +293,10 @@ export const hiddenPersonas = [
     matches({ answers, profile }) {
       return (
         answers.q22 === 'C' &&
-        (profile.submissionFatalism || 0) >= 7 &&
-        (profile.topicInflation || 0) <= 4
+        (profile.submissionFatalism || 0) >= 12 &&
+        (profile.topicInflation || 0) <= 2 &&
+        (profile.advisorStress || 0) >= 4 &&
+        (profile.advisorStress || 0) <= 9
       );
     },
   },
@@ -302,7 +304,7 @@ export const hiddenPersonas = [
     id: 'co-first-is-negotiable',
     title: '署名弹性调节者',
     subtitle: '贡献声明待更新',
-    journalPool: ['Rubbish Communications', 'Rubbish Labor & Authorship'],
+    journalPool: ['Rubbish Communications', 'Trends in Rubbish'],
     verdictPool: ['With Editor', 'Minor Revision'],
     blurb:
       '你最懂的未必是科研，但你很懂贡献声明里的空间艺术。你知道哪些词能让每个人都保住体面，也知道如何在事实、关系和投稿需要之间找到一种微妙平衡。',
@@ -318,7 +320,7 @@ export const hiddenPersonas = [
     id: 'dont-ask-during-defense',
     title: '现场追问回避体质',
     subtitle: '当前不在服务区',
-    journalPool: ['Rubbish Medicine', 'Rubbish Mental Health'],
+    journalPool: ['Rubbish Medicine', 'Rubbish NAS'],
     verdictPool: ['With Editor', 'Major Revision'],
     blurb:
       '你不是完全没有准备，你只是希望所有关键追问都能刚好错过你。你的研究生求生智慧主要体现在：先过眼前这关，细节以后再补，解释以后再想，尊严以后再捡。',
