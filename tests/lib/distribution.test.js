@@ -103,4 +103,9 @@ test('distribution stays reasonably balanced across personas, journals, and outc
     (graduationShares.get('有缘毕业') || 0) < 0.25,
     `有缘毕业 appears too often: ${graduationShares.get('有缘毕业') || 0}`,
   );
+  assert.ok(
+    (graduationShares.get('顺利毕业') || 0) >= 0.4 &&
+      (graduationShares.get('顺利毕业') || 0) <= 0.46,
+    `顺利毕业 share out of target range: ${graduationShares.get('顺利毕业') || 0}`,
+  );
 });

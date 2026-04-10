@@ -95,8 +95,8 @@ function pickGraduationOutcome({ persona, profile, answers }) {
   if (
     persona.id === 'lucky-graduate' ||
     (answers.q22 === 'C' &&
-      (profile.submissionFatalism || 0) >= 11 &&
-      (profile.advisorStress || 0) >= 5)
+      (profile.submissionFatalism || 0) >= 10 &&
+      (profile.advisorStress || 0) >= 4)
   ) {
     return {
       title: '有缘毕业',
@@ -105,9 +105,9 @@ function pickGraduationOutcome({ persona, profile, answers }) {
   }
 
   if (
-    (profile.advisorStress || 0) >= 10 &&
-    (profile.submissionFatalism || 0) >= 10 &&
-    (profile.laborBurden || 0) >= 6
+    (profile.advisorStress || 0) >= 9 &&
+    (profile.submissionFatalism || 0) >= 9 &&
+    (profile.laborBurden || 0) >= 5
   ) {
     return {
       title: '劝退边缘试探',
@@ -115,14 +115,14 @@ function pickGraduationOutcome({ persona, profile, answers }) {
     };
   }
 
-  if ((profile.advisorStress || 0) >= 8 && (profile.laborBurden || 0) >= 5) {
+  if ((profile.advisorStress || 0) >= 7 && (profile.laborBurden || 0) >= 4) {
     return {
       title: '延毕观察',
       note: '你和“再做一轮实验”之间，往往只差导师的一句“还可以再补一点”。',
     };
   }
 
-  if ((profile.significanceFixation || 0) >= 7 || persona.id === 'almost-significant') {
+  if ((profile.significanceFixation || 0) >= 6 || persona.id === 'almost-significant') {
     return {
       title: '建议再做一轮实验',
       note: '目前系统判断你离毕业差的不是勇气，而是一轮看起来更完整的新数据。',
